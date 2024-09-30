@@ -64,6 +64,13 @@ func (e *Executor) ScheduleTasks() {
 func (e *Executor) dispatchTasks() {
 	tasks := e.registry.List()
 	for _, name := range tasks {
+		select {
+		case <-e.ctx.Done():
+			return // 如果上下文被取消，立即返回
+		default:
+			// 继续执行
+		}
+
 		task, exists := e.registry.GetTask(name)
 		if !exists || !task.IsActive || task.IsRunning {
 			continue
@@ -82,7 +89,13 @@ func (e *Executor) dispatchTasks() {
 				if task.MutexGroup != "" {
 					e.mutexManager.Enqueue(task.MutexGroup, task.Name, e.getTaskFunc(task.Name))
 				} else {
-					e.schedulerCh <- task.Name
+					select {
+					case e.schedulerCh <- task.Name:
+						// 成功发送任务
+					case <-e.ctx.Done():
+						// 如果上下文被取消，停止发送任务
+						return
+					}
 				}
 			}
 		}
