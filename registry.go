@@ -21,6 +21,7 @@ type ScheduledTask struct {
 	IsRunning      bool
 	MutexGroup     string
 	Dependencies   []string
+	Priority       int // 新增字段，数值越大优先级越高
 }
 
 // Registry 任务注册表
@@ -39,7 +40,7 @@ func NewRegistry() *Registry {
 }
 
 // Register 注册一个任务
-func (r *Registry) Register(name string, fn TaskFunc, intervalSecs, maxRunTimeSecs int, mutexGroup string, dependencies []string) error {
+func (r *Registry) Register(name string, fn TaskFunc, intervalSecs, maxRunTimeSecs int, mutexGroup string, dependencies []string, priority int) error {
 	r.mu.Lock()
 	defer r.mu.Unlock()
 	if _, exists := r.tasks[name]; exists {
@@ -53,6 +54,7 @@ func (r *Registry) Register(name string, fn TaskFunc, intervalSecs, maxRunTimeSe
 		IsActive:       true,
 		MutexGroup:     mutexGroup,
 		Dependencies:   dependencies,
+		Priority:       priority,
 	}
 	r.handlers[name] = fn
 	return nil

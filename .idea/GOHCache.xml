@@ -1,0 +1,166 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="GoORMHelperCache">
+    <option name="schemaMapping">
+      <map>
+        <entry key="Config">
+          <value>
+            <set>
+              <option value="file://$PROJECT_DIR$/config.go" />
+            </set>
+          </value>
+        </entry>
+        <entry key="Executor">
+          <value>
+            <set>
+              <option value="file://$PROJECT_DIR$/executor.go" />
+            </set>
+          </value>
+        </entry>
+        <entry key="GroupQueue">
+          <value>
+            <set>
+              <option value="file://$PROJECT_DIR$/mutex.go" />
+            </set>
+          </value>
+        </entry>
+        <entry key="MutexManager">
+          <value>
+            <set>
+              <option value="file://$PROJECT_DIR$/mutex.go" />
+            </set>
+          </value>
+        </entry>
+        <entry key="Registry">
+          <value>
+            <set>
+              <option value="file://$PROJECT_DIR$/registry.go" />
+            </set>
+          </value>
+        </entry>
+        <entry key="ScheduledTask">
+          <value>
+            <set>
+              <option value="file://$PROJECT_DIR$/registry.go" />
+            </set>
+          </value>
+        </entry>
+        <entry key="TaskExecutionEntry">
+          <value>
+            <set>
+              <option value="file://$PROJECT_DIR$/mutex.go" />
+            </set>
+          </value>
+        </entry>
+        <entry key="TaskRunner">
+          <value>
+            <set>
+              <option value="file://$PROJECT_DIR$/taskrunner.go" />
+            </set>
+          </value>
+        </entry>
+      </map>
+    </option>
+    <option name="scannedPathMapping">
+      <map>
+        <entry key="file://$PROJECT_DIR$/config.go">
+          <value>
+            <ScannedPath>
+              <option name="lastModified" value="1727700462862" />
+              <option name="schema">
+                <list>
+                  <option value="Config" />
+                </list>
+              </option>
+            </ScannedPath>
+          </value>
+        </entry>
+        <entry key="file://$PROJECT_DIR$/executor.go">
+          <value>
+            <ScannedPath>
+              <option name="lastModified" value="1727703683488" />
+              <option name="schema">
+                <list>
+                  <option value="Executor" />
+                </list>
+              </option>
+            </ScannedPath>
+          </value>
+        </entry>
+        <entry key="file://$PROJECT_DIR$/logger.go">
+          <value>
+            <ScannedPath>
+              <option name="lastModified" value="1727700485282" />
+            </ScannedPath>
+          </value>
+        </entry>
+        <entry key="file://$PROJECT_DIR$/mutex.go">
+          <value>
+            <ScannedPath>
+              <option name="lastModified" value="1727700485330" />
+              <option name="schema">
+                <list>
+                  <option value="MutexManager" />
+                  <option value="GroupQueue" />
+                  <option value="TaskExecutionEntry" />
+                </list>
+              </option>
+            </ScannedPath>
+          </value>
+        </entry>
+        <entry key="file://$PROJECT_DIR$/options.go">
+          <value>
+            <ScannedPath>
+              <option name="lastModified" value="1727703404880" />
+            </ScannedPath>
+          </value>
+        </entry>
+        <entry key="file://$PROJECT_DIR$/registry.go">
+          <value>
+            <ScannedPath>
+              <option name="lastModified" value="1727700485440" />
+              <option name="schema">
+                <list>
+                  <option value="ScheduledTask" />
+                  <option value="Registry" />
+                </list>
+              </option>
+            </ScannedPath>
+          </value>
+        </entry>
+        <entry key="file://$PROJECT_DIR$/taskrunner.go">
+          <value>
+            <ScannedPath>
+              <option name="lastModified" value="1727704083625" />
+              <option name="schema">
+                <list>
+                  <option value="TaskRunner" />
+                </list>
+              </option>
+            </ScannedPath>
+          </value>
+        </entry>
+        <entry key="file://$PROJECT_DIR$/taskrunner_test/taskrunner_test.go">
+          <value>
+            <ScannedPath>
+              <option name="lastModified" value="1727705863984" />
+            </ScannedPath>
+          </value>
+        </entry>
+      </map>
+    </option>
+    <option name="tableStructMapping">
+      <map>
+        <entry key="config" value="Config" />
+        <entry key="executor" value="Executor" />
+        <entry key="group_queue" value="GroupQueue" />
+        <entry key="mutex_manager" value="MutexManager" />
+        <entry key="registry" value="Registry" />
+        <entry key="scheduled_task" value="ScheduledTask" />
+        <entry key="task_execution_entry" value="TaskExecutionEntry" />
+        <entry key="task_runner" value="TaskRunner" />
+      </map>
+    </option>
+    <option name="lastTimeChecked" value="1727704170805" />
+  </component>
+</project>

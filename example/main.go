@@ -30,7 +30,7 @@ func IndependentTask() {
 
 func main() {
 	// 创建 TaskRunner
-	runner, err := taskrunner.New(2)
+	runner, err := taskrunner.New(taskrunner.WithWorkers(2))
 	if err != nil {
 		fmt.Printf("创建 TaskRunner 失败: %v\n", err)
 		return
@@ -42,18 +42,27 @@ func main() {
 	}
 	runner.SetLogHandler(consoleLogger)
 
-	// 注册任务
-	err = runner.RegisterTask("ExampleTask", ExampleTask, 10, 5, "group1", []string{})
+	// 注册任务，并设置优先级
+	err = runner.RegisterTask("ExampleTask", ExampleTask, 10, 5, "group1", []string{}, 5) // 中等优先级
 	if err != nil {
 		fmt.Printf("注册 ExampleTask 失败: %v\n", err)
 	}
 
-	err = runner.RegisterTask("DependentTask", DependentTask, 15, 5, "group1", []string{"ExampleTask"})
+	err = runner.RegisterTask("DependentTask", DependentTask, 15, 5, "group1", []string{"ExampleTask"}, 3) // 低优先级
 	if err != nil {
 		fmt.Printf("注册 DependentTask 失败: %v\n", err)
 	}
 
-	err = runner.RegisterTask("IndependentTask", IndependentTask, 20, 5, "", []string{})
+	err = runner.RegisterTask("HighPriorityTask", func() {
+		fmt.Println("HighPriorityTask 执行中...")
+		time.Sleep(2 * time.Second)
+		fmt.Println("HighPriorityTask 执行完成")
+	}, 10, 5, "", []string{}, 10) // 高优先级
+	if err != nil {
+		fmt.Printf("注册 HighPriorityTask 失败: %v\n", err)
+	}
+
+	err = runner.RegisterTask("IndependentTask", IndependentTask, 20, 5, "", []string{}, 1) // 低优先级
 	if err != nil {
 		fmt.Printf("注册 IndependentTask 失败: %v\n", err)
 	}
